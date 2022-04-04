@@ -1,0 +1,27 @@
+{
+  "name": "nodejstesting",
+  "version": "1.0.0",
+  "description": "Node JS Unit Testing Examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/BernardIgiri/nodejstesting.git"
+  },
+  "author": "Bernard Igiri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BernardIgiri/nodejstesting/issues"
+  },
+  "homepage": "https://github.com/BernardIgiri/nodejstesting#readme",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
