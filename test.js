@@ -21,6 +21,20 @@ describe("Model test suite:", () => {
         assert.deepEqual(model.listUsers(), [1, 2, 3]);
     });
   });
+  describe("model.addUser", () => {
+    const user = { id: 10, name: "Joe" };
+    const mockDatabase = {
+      listOfUsers: [],
+      add: (listName, user) => {
+        mockDatabase.listOfUsers.push(user);
+      }
+    };
+    const model = new Model(mockDatabase);
+    it("adds a user", () => {
+      model.addUser(user);
+      assert.deepEqual(mockDatabase.listOfUsers[0], user);
+    });
+  });
   describe("model.longestWord", () => {
     const model = new Model(new Database());
     it("the first word is longest", () => {
@@ -28,6 +42,9 @@ describe("Model test suite:", () => {
     });
     it("the second word is longest", () => {
         assert.equal(model.longestWord(["apple", "squirrel", "cat", "dog"]), "squirrel");
+    });
+    it("the last word is longest", () => {
+        assert.equal(model.longestWord(["apple", "cat", "dog", "squirrel"]), "squirrel");
     });
   });
 });
