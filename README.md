@@ -2,6 +2,9 @@
 
 Examples of Unit Testing using nodejs.
 
+# Windows setup
+[First enable Windows subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)
+
 ## Setup
 
 1. Install [nodejs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -10,6 +13,10 @@ Examples of Unit Testing using nodejs.
 ## Run Server
 
 `npm start`
+
+## Run sum_numbers_in_files.js
+
+`node sum_numbers_in_files numbers1`
 
 ## Run Tests
 

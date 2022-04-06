@@ -1,7 +1,7 @@
 import assert from "assert";
 import Model from "./model.js"
 import Database from "./database.js"
-import sumNumbers from "./sum_numbers_in_files.js"
+import sumNumbers from "./sum_numbers_in_files2.js"
 
 describe("Model test suite:", () => {
   describe("model.addNumbers", () => {
@@ -51,27 +51,34 @@ describe("Model test suite:", () => {
 });
 
 describe("sum_numbers_in_files.js test suite:", () => {
+  const mockReadFile = path => Promise.resolve(
+    ({
+      "numbers1": "1 2 3",
+      "numbers2": "1000 5 32",
+      "numbersBad": "1 dog 10"
+    })[path]
+  );
   it("add 0 numbers give sum of 0", async () => {
-    const result = await sumNumbers([]);
+    const result = await sumNumbers([], mockReadFile);
     assert.equal(result, 0);
   });
   it("add 1 + 2 + 3 give sum of 6", async () => {
     const result = await sumNumbers([
       "numbers1"
-    ]);
+    ], mockReadFile);
     assert.equal(result, 6);
   });
   it("add arbitrary numbers gives expected sum", async () => {
     const result = await sumNumbers([
       "numbers1",
       "numbers2"
-    ]);
+    ], mockReadFile);
     assert.equal(result, 1043);
   });
   it("add numbers with invalid characters skips invalid numbers and returns sum", async () => {
     const result = await sumNumbers([
       "numbersBad"
-    ]);
+    ], mockReadFile);
     assert.equal(result, 11);
   });
 });
