@@ -20,7 +20,7 @@ const sumNumbers = async (files, readFile) => {
       return sum;
     })
   );
-  return sum + 10;
+  return sum;
 }
 
 if (filesArgument.length) {
