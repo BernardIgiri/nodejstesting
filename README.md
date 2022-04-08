@@ -14,6 +14,8 @@ Examples of Unit Testing using nodejs.
 
 `npm start`
 
+Open: http://localhost:8081/addNumbers/2/1
+
 ## Run sum_numbers_in_files.js
 
 `node sum_numbers_in_files numbers1`
