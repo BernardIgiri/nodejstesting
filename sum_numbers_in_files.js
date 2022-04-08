@@ -5,7 +5,7 @@ import { Buffer } from "buffer";
 const filesArgument = process.argv.slice(2);
 const readFileFromDisk = async path => fs.readFile(path, "utf8");
 
-const isNum = v => v.length;
+const isNum = v => v.length && !isNaN(v);
 
 const sumNumbers = async (files, readFile) => {
   let sum = 0;
