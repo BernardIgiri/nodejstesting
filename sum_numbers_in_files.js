@@ -3,14 +3,15 @@ import path from "path";
 import { Buffer } from "buffer";
 
 const filesArgument = process.argv.slice(2);
+const readFileFromDisk = async path => fs.readFile(path, "utf8");
 
 const isNum = v => v.length;
 
-const sumNumbers = async files => {
+const sumNumbers = async (files, readFile) => {
   let sum = 0;
   await Promise.all(
     files.map(async f => {
-      const contents = await fs.readFile(f, "utf8");
+      const contents = await readFile(f);
       sum += contents
         .split(/\s+/g)
         .reduce((s, v) => (
@@ -23,7 +24,7 @@ const sumNumbers = async files => {
 }
 
 if (filesArgument.length) {
-  let sum = await sumNumbers(filesArgument);
+  let sum = await sumNumbers(filesArgument, readFileFromDisk);
   console.log(`The sum is ${sum}`);
 }
 
